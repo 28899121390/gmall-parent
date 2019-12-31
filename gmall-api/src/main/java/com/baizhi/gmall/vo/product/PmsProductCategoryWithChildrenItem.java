@@ -1,19 +1,19 @@
-//package com.baizhi.gmall.vo.product;
-//
-//
-//import com.atguigu.gmall.pms.entity.ProductCategory;
-//import lombok.Data;
-//
-//import java.io.Serializable;
-//import java.util.List;
-//
-///**
-// */
-//@Data
-//public class PmsProductCategoryWithChildrenItem extends ProductCategory  implements Serializable {
-//
-//
-//
-//    private List<ProductCategory> children;
-//
-//}
+package com.baizhi.gmall.vo.product;
+
+
+import com.baizhi.gmall.pms.entity.ProductCategory;
+import lombok.Data;
+
+import java.io.Serializable;
+import java.util.List;
+
+/**
+ */
+@Data
+public class PmsProductCategoryWithChildrenItem extends ProductCategory  implements Serializable {
+
+
+
+    private List<ProductCategory> children;
+
+}

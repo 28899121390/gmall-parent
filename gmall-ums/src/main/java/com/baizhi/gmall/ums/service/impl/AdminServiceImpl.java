@@ -28,13 +28,14 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
 
     public Admin login(String username, String password) {
         String md5password = DigestUtils.md5DigestAsHex(password.getBytes());
-
         QueryWrapper<Admin> adminQueryWrapper = new QueryWrapper<Admin>().eq("username", username).eq("password", md5password);
         Admin admin = adminMapper.selectOne(adminQueryWrapper);
         return admin;
     }
 
     public Admin getUserInfo(String userName) {
-        return null;
+        QueryWrapper<Admin> queryWrapper = new QueryWrapper<Admin>().eq("username", userName);
+        Admin admin = adminMapper.selectOne(queryWrapper);
+        return admin;
     }
 }

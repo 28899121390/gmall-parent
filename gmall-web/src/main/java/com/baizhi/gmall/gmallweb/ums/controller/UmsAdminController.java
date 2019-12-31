@@ -2,23 +2,18 @@ package com.baizhi.gmall.gmallweb.ums.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 
-//import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-
 import com.baizhi.gmall.gmallweb.ums.vo.UmsAdminLoginParam;
 import com.baizhi.gmall.gmallweb.ums.vo.UmsAdminParam;
 import com.baizhi.gmall.gmallweb.utils.JwtTokenUtil;
 import com.baizhi.gmall.to.CommonResult;
 import com.baizhi.gmall.ums.entity.Admin;
 import com.baizhi.gmall.ums.service.AdminService;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -50,6 +45,7 @@ import java.util.Map;
 @Api(tags = "AdminController", description = "后台用户管理")
 @RequestMapping("/admin")
 public class UmsAdminController {
+
     @Reference
     private AdminService adminService;
 
@@ -189,6 +185,7 @@ public class UmsAdminController {
                        @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                        @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum){
         //TODO 分页查询用户信息
+
 
         //TODO 响应需要包含分页信息；详细查看swagger规定
         return new CommonResult().failed();

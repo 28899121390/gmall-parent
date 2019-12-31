@@ -13,7 +13,7 @@
         <module>gmall-api</module>
         <module>gmall-mbg</module>
         <module>gmall-ums</module>
-
+        <module>gmall-pms</module>
     </modules>
 
 
