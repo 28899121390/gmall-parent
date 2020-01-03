@@ -1,7 +1,6 @@
-package com.baizhi.gmall.gmallweb.controller;
+package com.baizhi.gmall.gmallweb.pms.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.baizhi.gmall.pms.entity.Brand;
 import com.baizhi.gmall.pms.service.BrandService;
 import com.baizhi.gmall.to.CommonResult;
 import com.baizhi.gmall.vo.PageInfoVo;

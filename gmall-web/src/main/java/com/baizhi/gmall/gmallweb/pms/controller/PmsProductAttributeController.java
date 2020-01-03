@@ -1,4 +1,4 @@
-package com.baizhi.gmall.gmallweb.controller;//package com.baizhi.gmall.admin.pms.controller;
+package com.baizhi.gmall.gmallweb.pms.controller;//package com.baizhi.gmall.admin.pms.controller;
 //
 //import com.alibaba.dubbo.config.annotation.Reference;
 //import com.atguigu.gmall.pms.service.ProductAttributeService;

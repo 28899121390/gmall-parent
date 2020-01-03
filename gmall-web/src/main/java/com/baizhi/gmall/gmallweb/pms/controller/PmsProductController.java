@@ -1,4 +1,4 @@
-package com.baizhi.gmall.gmallweb.controller;//package com.baizhi.gmall.admin.pms.controller;
+package com.baizhi.gmall.gmallweb.pms.controller;//package com.baizhi.gmall.admin.pms.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 
@@ -9,7 +9,6 @@ import com.baizhi.gmall.vo.product.PmsProductParam;
 import com.baizhi.gmall.vo.product.PmsProductQueryParam;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import jdk.nashorn.internal.objects.NativeUint8Array;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.validation.BindingResult;

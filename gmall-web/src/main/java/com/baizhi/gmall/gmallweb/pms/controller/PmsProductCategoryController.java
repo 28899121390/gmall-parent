@@ -1,13 +1,18 @@
-package com.baizhi.gmall.gmallweb.controller;
+package com.baizhi.gmall.gmallweb.pms.controller;
+
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.baizhi.gmall.pms.service.ProductCategoryService;
 import com.baizhi.gmall.to.CommonResult;
 import com.baizhi.gmall.vo.product.PmsProductCategoryParam;
-import io.swagger.annotations.Api;import io.swagger.annotations.ApiOperation;
+import com.baizhi.gmall.vo.product.PmsProductCategoryWithChildrenItem;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
+
 /**
  * 商品分类模块Controller
  */
@@ -79,9 +84,7 @@ public class PmsProductCategoryController {
     @GetMapping(value = "/list/withChildren")
     public Object listWithChildren() {
         //TODO 查询所有一级分类及子分类,查询任意菜单以及他下面的所有子菜单
-
-        //List<PmsProductCategoryWithChildrenItem> items = productCategoryService.listCatelogWithChilder(0);
-
-        return new CommonResult().success(null);
+        List<PmsProductCategoryWithChildrenItem> items = productCategoryService.listCatelogWithChilder(0);
+        return new CommonResult().success(items);
     }
 }

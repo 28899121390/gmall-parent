@@ -26,18 +26,16 @@ import java.util.Map;
  * 后台用户管理
  * SpringMVC支持使用 【JSR303】 方式进行校验
  * 1、springboot默认导第三方的校验框架hibernate-validator
- *
+ * <p>
  * 使用JSR303的三大步
  * 1）、给需要校验数据的javaBean上标注校验注解；
  * 2）、告诉SpringBoot，这个需要校验；@Valid
- *      springmvc进入方法之前，确定参数值的时候就会进行校验，如果校验出错，直接返回错误，不执行controller代码
+ * springmvc进入方法之前，确定参数值的时候就会进行校验，如果校验出错，直接返回错误，不执行controller代码
  * 3）、如何感知校验成功还是失败；
- *      只需要给开启了校验的javaBean参数后面，紧跟一个BindingResult对象就可以获取到校验结果;
- *         只要有BindingResult，即使校验错了，方法也会执行。我们需要手动处理
- *
+ * 只需要给开启了校验的javaBean参数后面，紧跟一个BindingResult对象就可以获取到校验结果;
+ * 只要有BindingResult，即使校验错了，方法也会执行。我们需要手动处理
+ * <p>
  * 统一的异常处理：
- *
- *
  */
 @Slf4j
 @CrossOrigin
@@ -59,10 +57,10 @@ public class UmsAdminController {
     JwtTokenUtil jwtTokenUtil;
 
 
-
     /**
      * 1）、注册成功返回用户的所有信息；{code,message,data:{username,icon,email}}
      * 2）、数据校验失败:{code,message,data}
+     *
      * @param umsAdminParam
      * @param result
      * @return
@@ -87,22 +85,21 @@ public class UmsAdminController {
 //        }else {
 //
 //        }
-        log.debug("需要注册的用户详情：{}",umsAdminParam);
-        int i = 10/0;
+
+        log.debug("需要注册的用户详情：{}", umsAdminParam);
+
         return new CommonResult().success(admin);
     }
 
     /**
      * 登录成功以后用户的信息以jwt令牌的方式返回给前端
+     *
      * @param umsAdminLoginParam
      * @param result
-     * @return
-     *
-     * 1、如果前端发过来的是json字符串，要封装对象。
+     * @return 1、如果前端发过来的是json字符串，要封装对象。
      * public Object login(@RequestBody UmsAdminLoginParam umsAdminLoginParam)
      * 2、如果前端发过来的是k=v&k=v符串，要封装对象。
      * public Object login(UmsAdminLoginParam umsAdminLoginParam)
-     *
      */
     @ApiOperation(value = "登录以后返回token")
     @PostMapping(value = "/login")
@@ -134,8 +131,8 @@ public class UmsAdminController {
 
         //3、是否可以进行刷新（未过刷新时间）
         if (jwtTokenUtil.canRefresh(token)) {
-            refreshToken =  jwtTokenUtil.refreshToken(token);
-        }else  if(refreshToken == null && "".equals(refreshToken)){
+            refreshToken = jwtTokenUtil.refreshToken(token);
+        } else if (refreshToken == null && "".equals(refreshToken)) {
             return new CommonResult().failed();
         }
 
@@ -179,11 +176,11 @@ public class UmsAdminController {
     }
 
     @ApiOperation("根据用户名或姓名分页获取用户列表")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public Object list(@RequestParam(value = "name",required = false) String name,
+    public Object list(@RequestParam(value = "name", required = false) String name,
                        @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-                       @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum){
+                       @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         //TODO 分页查询用户信息
 
 
@@ -192,63 +189,63 @@ public class UmsAdminController {
     }
 
     @ApiOperation("获取指定用户信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Object getItem(@PathVariable Long id){
+    public Object getItem(@PathVariable Long id) {
 
         //TODO 获取指定用户信息
         return new CommonResult().failed();
     }
 
     @ApiOperation("更新指定用户信息")
-    @RequestMapping(value = "/update/{id}",method = RequestMethod.POST)
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public Object update(@PathVariable Long id,@RequestBody Admin admin){
+    public Object update(@PathVariable Long id, @RequestBody Admin admin) {
 
         //TODO 更新指定用户信息
         return new CommonResult().failed();
     }
 
     @ApiOperation("删除指定用户信息")
-    @RequestMapping(value = "/delete/{id}",method = RequestMethod.POST)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public Object delete(@PathVariable Long id){
+    public Object delete(@PathVariable Long id) {
         //TODO 删除指定用户信息
         return new CommonResult().failed();
     }
 
     @ApiOperation("给用户分配角色")
-    @RequestMapping(value = "/role/update",method = RequestMethod.POST)
+    @RequestMapping(value = "/role/update", method = RequestMethod.POST)
     @ResponseBody
     public Object updateRole(@RequestParam("adminId") Long adminId,
-                             @RequestParam("roleIds") List<Long> roleIds){
+                             @RequestParam("roleIds") List<Long> roleIds) {
         //TODO 给用户分配角色
         return new CommonResult().failed();
     }
 
     @ApiOperation("获取指定用户的角色")
-    @RequestMapping(value = "/role/{adminId}",method = RequestMethod.GET)
+    @RequestMapping(value = "/role/{adminId}", method = RequestMethod.GET)
     @ResponseBody
-    public Object getRoleList(@PathVariable Long adminId){
+    public Object getRoleList(@PathVariable Long adminId) {
         //TODO 获取指定用户的角色
 
         return new CommonResult().success(null);
     }
 
     @ApiOperation("给用户分配(增减)权限")
-    @RequestMapping(value = "/permission/update",method = RequestMethod.POST)
+    @RequestMapping(value = "/permission/update", method = RequestMethod.POST)
     @ResponseBody
     public Object updatePermission(@RequestParam Long adminId,
-                                   @RequestParam("permissionIds") List<Long> permissionIds){
+                                   @RequestParam("permissionIds") List<Long> permissionIds) {
         //TODO 给用户分配(增减)权限
 
         return new CommonResult().failed();
     }
 
     @ApiOperation("获取用户所有权限（包括+-权限）")
-    @RequestMapping(value = "/permission/{adminId}",method = RequestMethod.GET)
+    @RequestMapping(value = "/permission/{adminId}", method = RequestMethod.GET)
     @ResponseBody
-    public Object getPermissionList(@PathVariable Long adminId){
+    public Object getPermissionList(@PathVariable Long adminId) {
         //TODO 获取用户所有权限（包括+-权限）
         return new CommonResult().failed();
     }
